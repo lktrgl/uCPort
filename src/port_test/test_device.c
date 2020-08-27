@@ -290,6 +290,77 @@ static const device_descriptor_t s_device_time =
 
 /*---------------------------------------------------------------------------*/
 
+static int8_t s_device_motor_init()
+{
+  return DEVICE_OK;
+}
+
+/*---------------------------------------------------------------------------*/
+
+static int8_t s_device_motor_open ( device_id_t id )
+{
+  ( void ) id;
+  return DEVICE_OK;
+}
+
+/*---------------------------------------------------------------------------*/
+
+static int16_t s_device_motor_read ( void* dest, uint16_t len )
+{
+  if ( sizeof ( g_sensor_data.sensor_is_motor ) <= len )
+  {
+    memcpy ( dest, &g_sensor_data.sensor_is_motor, sizeof ( g_sensor_data.sensor_is_motor ) );
+    return sizeof ( g_sensor_data.sensor_is_motor );
+  }
+
+  return 0;
+}
+
+/*---------------------------------------------------------------------------*/
+
+static int16_t s_device_motor_write ( const void* src, uint16_t len )
+{
+  if ( sizeof ( g_sensor_data.sensor_is_motor ) >= len )
+  {
+    memcpy ( &g_sensor_data.sensor_is_motor, src, len );
+    return len;
+  }
+
+  return 0;
+}
+
+/*---------------------------------------------------------------------------*/
+
+static int16_t s_device_motor_ioctl ( uint16_t operation, void* ptr )
+{
+  ( void ) operation;
+  ( void ) ptr;
+  return DEVICE_OK;
+}
+
+/*---------------------------------------------------------------------------*/
+
+static void s_device_motor_close ( device_id_t id )
+{
+  ( void ) id;
+
+}
+
+/*---------------------------------------------------------------------------*/
+
+static const device_descriptor_t s_device_motor =
+{
+  .init = s_device_motor_init,
+  .open = s_device_motor_open,
+  .read = s_device_motor_read,
+  .write = s_device_motor_write,
+  .ioctl = s_device_motor_ioctl,
+  .close = s_device_motor_close
+};
+
+
+/*---------------------------------------------------------------------------*/
+
 static int8_t s_device_exit_init()
 {
   return DEVICE_OK;
@@ -366,6 +437,7 @@ static const device_descriptor_t* s_device_registry[] =
   &s_device_temperature,
   &s_device_light,
   &s_device_time,
+  &s_device_motor,
   &s_device_exit,
   NULL
 };

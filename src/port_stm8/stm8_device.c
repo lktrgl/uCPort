@@ -4,6 +4,7 @@
 #include <port_stm8/impl/stm8_device_temperature.h>
 #include <port_stm8/impl/stm8_device_light.h>
 #include <port_stm8/impl/stm8_device_time.h>
+#include <port_stm8/impl/stm8_device_motor.h>
 #include <port_stm8/impl/stm8_device_exit.h>
 
 #include <custom_sensor_data.h>
@@ -22,6 +23,7 @@ static const device_descriptor_t* s_device_registry[] =
   &g_stm8_device_temperature,
   &g_stm8_device_light,
   &g_stm8_device_time,
+  &g_stm8_device_motor,
   &g_stm8_device_exit,
   NULL
 };
