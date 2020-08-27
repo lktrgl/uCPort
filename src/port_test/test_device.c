@@ -374,6 +374,8 @@ static const device_descriptor_t* s_device_registry[] =
 
 void install_device_simulation()
 {
-  assert ( DEVICE_OK == device_register ( s_device_registry ) );
+  const int8_t reg_result = device_register ( s_device_registry );
+  ( void ) reg_result;
+  assert ( DEVICE_OK == reg_result );
   device_init_all();
 }
