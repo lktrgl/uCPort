@@ -14,13 +14,18 @@ else()
     set ( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DNDEBUG" )
 endif()
 
-include_directories (
-     include
-     )
-
 #------------------------------------------------------
 
 if(USE_PORT_STM8)
+
+include_directories (
+     contrib/STM8S_StdPeriph_Lib/Libraries/STM8S_StdPeriph_Driver/inc
+     include/port_stm8/impl
+     include
+     )
+
+add_subdirectory( contrib/STM8S_StdPeriph_Lib/Libraries/STM8S_StdPeriph_Driver )
+
 set (stm8_src src/port_stm8
     )
 set (stm8_include include/port_stm8
@@ -41,6 +46,8 @@ set (port_stm8_libsources
      ${stm8_include}/impl/stm8_device_motor.h
      ${stm8_src}/stm8_device_exit.c
      ${stm8_include}/impl/stm8_device_exit.h
+     ${stm8_src}/stm8s_it.c
+     ${stm8_include}/impl/stm8s_it.h
      )
 
 add_library ( port_stm8
@@ -51,6 +58,11 @@ endif()
 #------------------------------------------------------
 
 if(USE_PORT_TEST)
+
+include_directories (
+     include
+     )
+
 set (test_src src/port_test
     )
 set (test_include include/port_test
