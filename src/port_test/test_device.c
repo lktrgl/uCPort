@@ -377,10 +377,10 @@ static int8_t s_device_led_open ( device_id_t id )
 
 static int16_t s_device_led_read ( void* dest, uint16_t len )
 {
-  if ( sizeof ( g_sensor_data.sensor_is_motor ) <= len )
+  if ( sizeof ( g_sensor_data.sensor_is_led ) <= len )
   {
-    memcpy ( dest, &g_sensor_data.sensor_is_motor, sizeof ( g_sensor_data.sensor_is_motor ) );
-    return sizeof ( g_sensor_data.sensor_is_motor );
+    memcpy ( dest, &g_sensor_data.sensor_is_led, sizeof ( g_sensor_data.sensor_is_led ) );
+    return sizeof ( g_sensor_data.sensor_is_led );
   }
 
   return 0;
@@ -390,9 +390,9 @@ static int16_t s_device_led_read ( void* dest, uint16_t len )
 
 static int16_t s_device_led_write ( const void* src, uint16_t len )
 {
-  if ( sizeof ( g_sensor_data.sensor_is_motor ) >= len )
+  if ( sizeof ( g_sensor_data.sensor_is_led ) >= len )
   {
-    memcpy ( &g_sensor_data.sensor_is_motor, src, len );
+    memcpy ( &g_sensor_data.sensor_is_led, src, len );
     return len;
   }
 

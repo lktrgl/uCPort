@@ -44,7 +44,7 @@ static int16_t s_device_exit_write ( const void* src, uint16_t len )
   {
     memcpy ( &g_sensor_data.sensor_is_exit, src, len );
 
-    if(g_sensor_data.sensor_is_exit)
+    if ( g_sensor_data.sensor_is_exit )
     {
       WWDG_SWReset();
     }
