@@ -6,6 +6,8 @@
 #include <assert.h>
 #include <string.h>
 
+#include <stm8s.h>
+
 /*---------------------------------------------------------------------------*/
 
 static int8_t s_device_exit_init()
@@ -41,6 +43,12 @@ static int16_t s_device_exit_write ( const void* src, uint16_t len )
   if ( sizeof ( g_sensor_data.sensor_is_exit ) >= len )
   {
     memcpy ( &g_sensor_data.sensor_is_exit, src, len );
+
+    if(g_sensor_data.sensor_is_exit)
+    {
+      WWDG_SWReset();
+    }
+
     return len;
   }
 
