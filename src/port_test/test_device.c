@@ -358,6 +358,75 @@ static const device_descriptor_t s_device_motor =
   .close = s_device_motor_close
 };
 
+/*---------------------------------------------------------------------------*/
+
+static int8_t s_device_led_init()
+{
+  return DEVICE_OK;
+}
+
+/*---------------------------------------------------------------------------*/
+
+static int8_t s_device_led_open ( device_id_t id )
+{
+  ( void ) id;
+  return DEVICE_OK;
+}
+
+/*---------------------------------------------------------------------------*/
+
+static int16_t s_device_led_read ( void* dest, uint16_t len )
+{
+  if ( sizeof ( g_sensor_data.sensor_is_motor ) <= len )
+  {
+    memcpy ( dest, &g_sensor_data.sensor_is_motor, sizeof ( g_sensor_data.sensor_is_motor ) );
+    return sizeof ( g_sensor_data.sensor_is_motor );
+  }
+
+  return 0;
+}
+
+/*---------------------------------------------------------------------------*/
+
+static int16_t s_device_led_write ( const void* src, uint16_t len )
+{
+  if ( sizeof ( g_sensor_data.sensor_is_motor ) >= len )
+  {
+    memcpy ( &g_sensor_data.sensor_is_motor, src, len );
+    return len;
+  }
+
+  return 0;
+}
+
+/*---------------------------------------------------------------------------*/
+
+static int16_t s_device_led_ioctl ( uint16_t operation, void* ptr )
+{
+  ( void ) operation;
+  ( void ) ptr;
+  return DEVICE_OK;
+}
+
+/*---------------------------------------------------------------------------*/
+
+static void s_device_led_close ( device_id_t id )
+{
+  ( void ) id;
+
+}
+
+/*---------------------------------------------------------------------------*/
+
+static const device_descriptor_t s_device_led =
+{
+  .init = s_device_led_init,
+  .open = s_device_led_open,
+  .read = s_device_led_read,
+  .write = s_device_led_write,
+  .ioctl = s_device_led_ioctl,
+  .close = s_device_led_close
+};
 
 /*---------------------------------------------------------------------------*/
 
@@ -431,14 +500,15 @@ static const device_descriptor_t s_device_exit =
 
 /*---------------------------------------------------------------------------*/
 
-static const device_descriptor_t* s_device_registry[] =
+static const device_descriptor_t* s_device_registry[/*DEV_COUNT+1*/] =
 {
-  &s_device_humidity,
-  &s_device_temperature,
-  &s_device_light,
-  &s_device_time,
-  &s_device_motor,
-  &s_device_exit,
+  /*[DEV_HUMIDITY] = */&s_device_humidity,
+  /*[DEV_TEMPERATURE] = */&s_device_temperature,
+  /*[DEV_LIGHT] = */&s_device_light,
+  /*[DEV_TIME] = */&s_device_time,
+  /*[DEV_MOTOR] = */&s_device_motor,
+  /*[DEV_LED] = */&s_device_led,
+  /*[DEV_EXIT] = */&s_device_exit,
   NULL
 };
 

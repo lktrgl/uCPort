@@ -5,6 +5,7 @@
 #include <port_stm8/impl/stm8_device_light.h>
 #include <port_stm8/impl/stm8_device_time.h>
 #include <port_stm8/impl/stm8_device_motor.h>
+#include <port_stm8/impl/stm8_device_led.h>
 #include <port_stm8/impl/stm8_device_exit.h>
 
 #include <custom_sensor_data.h>
@@ -19,14 +20,15 @@
 
 /*---------------------------------------------------------------------------*/
 
-static const device_descriptor_t* s_device_registry[] =
+static const device_descriptor_t* s_device_registry[/*DEV_COUNT+1*/] =
 {
-  &g_stm8_device_humidity,
-  &g_stm8_device_temperature,
-  &g_stm8_device_light,
-  &g_stm8_device_time,
-  &g_stm8_device_motor,
-  &g_stm8_device_exit,
+  /*[DEV_HUMIDITY] = */&g_stm8_device_humidity,
+  /*[DEV_TEMPERATURE] = */&g_stm8_device_temperature,
+  /*[DEV_LIGHT] = */&g_stm8_device_light,
+  /*[DEV_TIME] = */&g_stm8_device_time,
+  /*[DEV_MOTOR] = */&g_stm8_device_motor,
+  /*[DEV_LED] = */&g_stm8_device_led,
+  /*[DEV_EXIT] = */&g_stm8_device_exit,
   NULL
 };
 

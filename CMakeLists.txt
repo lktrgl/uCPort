@@ -45,6 +45,8 @@ set (port_stm8_libsources
      ${stm8_src}/stm8_device_motor.c
      ${stm8_include}/impl/stm8_device_motor.h
      ${stm8_src}/stm8_device_exit.c
+     ${stm8_include}/impl/stm8_device_led.h
+     ${stm8_src}/stm8_device_led.c
      ${stm8_include}/impl/stm8_device_exit.h
      ${stm8_src}/stm8s_it.c
      ${stm8_include}/impl/stm8s_it.h
