@@ -30,6 +30,8 @@
 /* Includes ------------------------------------------------------------------*/
 #include "port_stm8/impl/stm8s_it.h"
 
+#include <custom_sensor_data.h>
+
 /** @addtogroup Template_Project
   * @{
   */
@@ -76,7 +78,6 @@ INTERRUPT_HANDLER_TRAP ( TRAP_IRQHandler )
   * @retval None
   */
 INTERRUPT_HANDLER ( TLI_IRQHandler, 0 )
-
 {
   /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
@@ -229,6 +230,7 @@ INTERRUPT_HANDLER ( TIM1_UPD_OVF_TRG_BRK_IRQHandler, 11 )
   /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
   */
+  ++g_sensor_data.sensor_tick_counter;
 }
 
 /**
