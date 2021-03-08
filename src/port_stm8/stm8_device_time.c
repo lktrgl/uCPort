@@ -39,9 +39,9 @@ static int8_t s_device_time_init()
 
 /*---------------------------------------------------------------------------*/
 
-static int8_t s_device_time_open ( device_id_t id )
+static int8_t s_device_time_open ( const char* device_name )
 {
-  ( void ) id;
+  ( void ) device_name;
 
   /* TIM1 counter enable */
   TIM1_Cmd ( ENABLE );
@@ -112,6 +112,7 @@ static void s_device_time_close ( device_id_t id )
 
 const device_descriptor_t g_stm8_device_time =
 {
+  .device_name = "/dev/time",
   .init = s_device_time_init,
   .open = s_device_time_open,
   .read = s_device_time_read,

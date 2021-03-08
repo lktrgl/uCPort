@@ -15,9 +15,9 @@ static int8_t s_device_temperature_init()
 
 /*---------------------------------------------------------------------------*/
 
-static int8_t s_device_temperature_open ( device_id_t id )
+static int8_t s_device_temperature_open ( const char* device_name )
 {
-  ( void ) id;
+  ( void ) device_name;
   return DEVICE_OK;
 }
 
@@ -68,6 +68,7 @@ static void s_device_temperature_close ( device_id_t id )
 
 const device_descriptor_t g_stm8_device_temperature =
 {
+  .device_name = "/dev/temperature",
   .init = s_device_temperature_init,
   .open = s_device_temperature_open,
   .read = s_device_temperature_read,

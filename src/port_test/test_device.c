@@ -87,9 +87,9 @@ static int8_t s_device_temperature_init()
 
 /*---------------------------------------------------------------------------*/
 
-static int8_t s_device_temperature_open ( device_id_t id )
+static int8_t s_device_temperature_open ( const char* device_name )
 {
-  ( void ) id;
+  ( void ) device_name;
   return DEVICE_OK;
 }
 
@@ -140,6 +140,7 @@ static void s_device_temperature_close ( device_id_t id )
 
 static const device_descriptor_t s_device_temperature =
 {
+  .device_name = "/dev/temperature",
   .init = s_device_temperature_init,
   .open = s_device_temperature_open,
   .read = s_device_temperature_read,
@@ -157,9 +158,9 @@ static int8_t s_device_light_init()
 
 /*---------------------------------------------------------------------------*/
 
-static int8_t s_device_light_open ( device_id_t id )
+static int8_t s_device_light_open ( const char* device_name )
 {
-  ( void ) id;
+  ( void ) device_name;
   return DEVICE_OK;
 }
 
@@ -210,6 +211,7 @@ static void s_device_light_close ( device_id_t id )
 
 static const device_descriptor_t s_device_light =
 {
+  .device_name = "/dev/light",
   .init = s_device_light_init,
   .open = s_device_light_open,
   .read = s_device_light_read,
@@ -227,9 +229,9 @@ static int8_t s_device_time_init()
 
 /*---------------------------------------------------------------------------*/
 
-static int8_t s_device_time_open ( device_id_t id )
+static int8_t s_device_time_open ( const char* device_name )
 {
-  ( void ) id;
+  ( void ) device_name;
   return DEVICE_OK;
 }
 
@@ -280,6 +282,7 @@ static void s_device_time_close ( device_id_t id )
 
 static const device_descriptor_t s_device_time =
 {
+  .device_name = "/dev/time",
   .init = s_device_time_init,
   .open = s_device_time_open,
   .read = s_device_time_read,
@@ -297,9 +300,9 @@ static int8_t s_device_motor_init()
 
 /*---------------------------------------------------------------------------*/
 
-static int8_t s_device_motor_open ( device_id_t id )
+static int8_t s_device_motor_open ( const char* device_name )
 {
-  ( void ) id;
+  ( void ) device_name;
   return DEVICE_OK;
 }
 
@@ -350,6 +353,7 @@ static void s_device_motor_close ( device_id_t id )
 
 static const device_descriptor_t s_device_motor =
 {
+  .device_name = "/dev/motor",
   .init = s_device_motor_init,
   .open = s_device_motor_open,
   .read = s_device_motor_read,
@@ -367,9 +371,9 @@ static int8_t s_device_led_init()
 
 /*---------------------------------------------------------------------------*/
 
-static int8_t s_device_led_open ( device_id_t id )
+static int8_t s_device_led_open ( const char* device_name )
 {
-  ( void ) id;
+  ( void ) device_name;
   return DEVICE_OK;
 }
 
@@ -420,6 +424,7 @@ static void s_device_led_close ( device_id_t id )
 
 static const device_descriptor_t s_device_led =
 {
+  .device_name = "/dev/led",
   .init = s_device_led_init,
   .open = s_device_led_open,
   .read = s_device_led_read,
@@ -437,9 +442,9 @@ static int8_t s_device_exit_init()
 
 /*---------------------------------------------------------------------------*/
 
-static int8_t s_device_exit_open ( device_id_t id )
+static int8_t s_device_exit_open ( const char* device_name )
 {
-  ( void ) id;
+  ( void ) device_name;
   return DEVICE_OK;
 }
 
@@ -490,6 +495,7 @@ static void s_device_exit_close ( device_id_t id )
 
 static const device_descriptor_t s_device_exit =
 {
+  .device_name = "/dev/exit",
   .init = s_device_exit_init,
   .open = s_device_exit_open,
   .read = s_device_exit_read,

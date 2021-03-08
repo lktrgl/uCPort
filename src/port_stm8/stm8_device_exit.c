@@ -17,9 +17,9 @@ static int8_t s_device_exit_init()
 
 /*---------------------------------------------------------------------------*/
 
-static int8_t s_device_exit_open ( device_id_t id )
+static int8_t s_device_exit_open ( const char* device_name )
 {
-  ( void ) id;
+  ( void ) device_name;
   return DEVICE_OK;
 }
 
@@ -76,6 +76,7 @@ static void s_device_exit_close ( device_id_t id )
 
 const device_descriptor_t g_stm8_device_exit =
 {
+  .device_name = "/dev/exit",
   .init = s_device_exit_init,
   .open = s_device_exit_open,
   .read = s_device_exit_read,

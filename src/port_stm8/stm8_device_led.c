@@ -26,9 +26,9 @@ static int8_t s_device_led_init()
 
 /*---------------------------------------------------------------------------*/
 
-static int8_t s_device_led_open ( device_id_t id )
+static int8_t s_device_led_open ( const char* device_name )
 {
-  ( void ) id;
+  ( void ) device_name;
   return DEVICE_OK;
 }
 
@@ -90,6 +90,7 @@ static void s_device_led_close ( device_id_t id )
 
 const device_descriptor_t g_stm8_device_led =
 {
+  .device_name = "/dev/led",
   .init = s_device_led_init,
   .open = s_device_led_open,
   .read = s_device_led_read,
