@@ -17,9 +17,9 @@ static int8_t s_device_humidity_init()
 
 /*---------------------------------------------------------------------------*/
 
-static int8_t s_device_humidity_open ( device_id_t id )
+static int8_t s_device_humidity_open ( const char* device_name )
 {
-  ( void ) id;
+  ( void ) device_name;
   return DEVICE_OK;
 }
 
